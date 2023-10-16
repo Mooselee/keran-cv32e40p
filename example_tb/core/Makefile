@@ -24,21 +24,25 @@
 MAKE			= make
 
 # vsim configuration
-VVERSION                = "10.7b"
+#VVERSION                = "10.7b"
+#VLOG			= vlog-$(VVERSION)
+#VLIB			= vlib-$(VVERSION)
+#VOPT			= vopt-$(VVERSION)
+#VSIM			= vsim-$(VVERSION)
 
-VLIB			= vlib-$(VVERSION)
+VLIB			= vlib
 VWORK			= work
 
-VLOG			= vlog-$(VVERSION)
+VLOG			= vlog
 VLOG_FLAGS		= -pedanticerrors -suppress 2577 -suppress 2583 -define CV32E40P_TRACE_EXECUTION
 VLOG_LOG                = vloggy
 
-VOPT			= vopt-$(VVERSION)
+VOPT			= vopt
 VOPT_FLAGS		= -debugdb -fsmdebug -pedanticerrors +acc #=mnprft
 
-VSIM			= vsim-$(VVERSION)
+VSIM			= vsim
 VSIM_HOME               = /usr/pack/modelsim-$(VVERSION)-kgf/questasim
-VSIM_FLAGS              =  # user defined
+VSIM_FLAGS              =
 ALL_VSIM_FLAGS		= $(VSIM_FLAGS)
 VSIM_DEBUG_FLAGS	= -debugdb
 VSIM_GUI_FLAGS          = -gui -debugdb
@@ -64,7 +68,9 @@ RTLSRC_VLOG_TB_TOP	:= $(basename $(notdir $(RTLSRC_TB_TOP)))
 RTLSRC_VOPT_TB_TOP	:= $(addsuffix _vopt, $(RTLSRC_VLOG_TB_TOP))
 
 # riscv toolchain install path
-RISCV                    ?= ~/.riscv
+#RISCV                    ?= ~/.riscv
+RISCV                    ?= ~/R-riscv_toolchain/pulp_toolchain/rv32imc
+
 RISCV_EXE_PREFIX         = $(RISCV)/bin/riscv32-unknown-elf-
 
 # assume vsim if no target chosen
